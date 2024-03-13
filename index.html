@@ -19,11 +19,24 @@
 
     <script type="text/babel">
         class App extends React.Component {
+            state = {
+                name: '不良帅',
+                age: 310,
+            }
+            // 函数
+            handleClick(e) {
+                console.log(e.target);
+            }
+            handleMouseOver(e) {
+                console.log(e.target);
+            }
             render() {
                 return (
                     <div className="app-content">
                         <h1>hello,world</h1>
-                        <p>{Math.random() * 10}</p>
+                        <p>我的名字叫: {this.state.name}, 今年年龄: {this.state.age}</p>
+                        <button onClick={this.handleClick}>点击</button>
+                        <button onMouseOver={this.handleMouseOver}>鼠标悬停</button>
                     </div>
                 );
             }
