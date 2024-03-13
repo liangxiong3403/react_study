@@ -24,11 +24,20 @@
                 age: 310,
             }
             // 函数
-            handleClick(e) {
-                console.log(e.target);
+            handleClick = e => {
+                // console.log(e.target);
+                console.log(this.state);
+
+                this.setState({
+                    name: '帝释天',
+                    age: 66,
+                });
             }
-            handleMouseOver(e) {
-                console.log(e.target);
+            handleMouseOver = e => {
+                console.log(e.target, e.pageX);
+            }
+            handleCopy = e => {
+                e.target.innerHTML += '<p>版权声明: 画江湖之不良人</p>';
             }
             render() {
                 return (
@@ -37,6 +46,8 @@
                         <p>我的名字叫: {this.state.name}, 今年年龄: {this.state.age}</p>
                         <button onClick={this.handleClick}>点击</button>
                         <button onMouseOver={this.handleMouseOver}>鼠标悬停</button>
+
+                        <p onCopy={this.handleCopy}>不良帅: 一天是不良人, 一辈子都是!</p>
                     </div>
                 );
             }
