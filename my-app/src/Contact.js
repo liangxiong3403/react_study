@@ -1,4 +1,5 @@
 import React from "react";
+import './Contact.css'
 
 // props是形式参数(可以任意名称)
 const Contact = props => {
