@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Contact from "./Contact";
+import AddContact from "./AddContact";
 
 class App extends Component {
 
@@ -12,15 +13,22 @@ class App extends Component {
     ]
   }
 
-  render() {
-    console.log('contactFormxxx');
+  addContact = contact => {
+    contact.id = Math.round(Math.random() * 100);
+    let contactForm = [...this.state.contactForm, contact];
+    this.setState({
+      contactForm: contactForm
+    })
+  }
 
+  render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1>这是第一个React应用程序</h1>
         </header>
         <Contact contactForm={this.state.contactForm} />
+        <AddContact addContact={this.addContact} />
       </div>
     );
   }
