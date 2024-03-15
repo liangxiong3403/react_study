@@ -14,10 +14,17 @@ class App extends Component {
   }
 
   addContact = contact => {
-    contact.id = Math.round(Math.random() * 100);
-    let contactForm = [...this.state.contactForm, contact];
+    contact.id = Math.random();
+    let contactFormCopy = [...this.state.contactForm, contact];
     this.setState({
-      contactForm: contactForm
+      contactForm: contactFormCopy
+    })
+  }
+
+  deleteContact = id => {
+    let contactFormCopy = this.state.contactForm.filter(contact => contact.id != id);
+    this.setState({
+      contactForm: contactFormCopy
     })
   }
 
@@ -27,7 +34,7 @@ class App extends Component {
         <header className="App-header">
           <h1>这是第一个React应用程序</h1>
         </header>
-        <Contact contactForm={this.state.contactForm} />
+        <Contact contactForm={this.state.contactForm} deleteContact={this.deleteContact} />
         <AddContact addContact={this.addContact} />
       </div>
     );
