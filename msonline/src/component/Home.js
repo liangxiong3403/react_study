@@ -18,12 +18,14 @@ class Home extends Component {
     render() {
         const { posts } = this.state;
         const postList = posts.length > 0 ? (posts.map(post => {
-            return <div className="post card" key={post.id}>
-                <div className="card-content">
-                    <span className="card-title">{post.title}</span>
-                    <p>{post.body}</p>
+            return (
+                <div className="post card" key={post.id}>
+                    <div className="card-content">
+                        <span className="card-title red-text">{post.title}</span>
+                        <p>{post.body}</p>
+                    </div>
                 </div>
-            </div>
+            )
         })) : (
             <div>没有数据展示</div>
         )
