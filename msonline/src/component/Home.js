@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { connect } from "react-redux";
 
 class Home extends Component {
 
@@ -38,6 +39,13 @@ class Home extends Component {
                 </div>
             </div>
         )
+    }
+}
+
+
+const mapStateToProps = state => {
+    return {
+        posts: state.posts,
     }
 }
 
