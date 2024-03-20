@@ -1,32 +1,28 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-class Post extends Component {
+export default function Post() {
 
-    state = {
-        id: 44
-    }
+    const { post_id } = useParams();
 
-    componentDidMount() {
-        let id = 1;
-        axios.get("http://jsonplaceholder.typicode.com/posts/" + id).then(res => {
-            this.setState({
-                posts: res.data
-            })
-        })
-    }
+    const [post, setPost] = useState({});
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("http://jsonplaceholder.typicode.com/posts/" + post_id);
+            setPost(response.data);
+        };
+        fetchData();
+    }, [post_id]);
 
+    return (
+        (<div className="post card" key={post.id}>
+            <div className="card-content">
+                <span className="card-title red-text">{post.title}</span>
+                <p>{post.body}</p>
+            </div>
+        </div>)
 
-    render() {
-        return (
-            <div className="container" >
-                {/* <h4>{this.state.id}</h4> */}
-                < h4 > 123</h4>
-            </div >
-        )
-    }
+    )
 }
-
-
-export default Post;

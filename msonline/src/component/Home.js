@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import { connect } from "react-redux";
+import Post from "./Post";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
 
@@ -22,7 +23,9 @@ class Home extends Component {
             return (
                 <div className="post card" key={post.id}>
                     <div className="card-content">
-                        <span className="card-title red-text">{post.title}</span>
+                        <Link to={'/' + post.id}>
+                            <span className="card-title red-text">{post.title}</span>
+                        </Link>
                         <p>{post.body}</p>
                     </div>
                 </div>
@@ -42,11 +45,5 @@ class Home extends Component {
     }
 }
 
-
-const mapStateToProps = state => {
-    return {
-        posts: state.posts,
-    }
-}
 
 export default Home;
